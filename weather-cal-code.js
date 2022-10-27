@@ -1239,12 +1239,14 @@ const weatherCal = {
     this.tintIcon(mainCondition, this.format.largeTemp)
     mainConditionStack.setPadding(weatherSettings.showLocation ? 0 : this.padding, this.padding, 0, this.padding)
     
-    const tempText = this.displayNumber(weatherData.currentTemp,"--") + "°, " + this.displayNumber(weatherData.currentUVI,"--")
+    const tempText = this.displayNumber(weatherData.currentTemp,"--") + "°"
     if (weatherSettings.horizontalCondition) {
       mainConditionStack.addSpacer(5)
       mainConditionStack.layoutHorizontally()
       mainConditionStack.centerAlignContent()
-      this.provideText(tempText, mainConditionStack, this.format.mediumSystemFont)
+      this.provideText(tempText, mainConditionStack, this.format.tempText)
+      mainConditionStack.addSpacer(5)
+      this.provideText(this.displayNumber(weatherData.currentUVI,"--"), mainConditionStack, this.format.smallTemp)
     }
 
     if (weatherSettings.showCondition) {
@@ -1972,7 +1974,7 @@ const weatherCal = {
           name: "Night greeting",
         },
         nextHourLabel: {
-          val: "Next hour",
+          val: "Next hr",
           name: "Label for next hour of weather",
         },
         tomorrowLabel: {
