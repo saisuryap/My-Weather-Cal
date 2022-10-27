@@ -1235,16 +1235,16 @@ const weatherCal = {
 
     const mainConditionStack = this.align(currentWeatherStack)
     const mainCondition = mainConditionStack.addImage(this.provideConditionSymbol(weatherData.currentCondition,this.isNight(this.now)))
-    mainCondition.imageSize = new Size(22,22) // TODO: Adjustable size
+    mainCondition.imageSize = new Size(11,11) // TODO: Adjustable size
     this.tintIcon(mainCondition, this.format.largeTemp)
     mainConditionStack.setPadding(weatherSettings.showLocation ? 0 : this.padding, this.padding, 0, this.padding)
     
     const tempText = this.displayNumber(weatherData.currentTemp,"--") + "°"
     if (weatherSettings.horizontalCondition) {
-      //mainConditionStack.addSpacer(5)
+      mainConditionStack.addSpacer()
       mainConditionStack.layoutHorizontally()
-      //mainConditionStack.centerAlignContent()
-      //this.provideText(tempText, mainConditionStack, this.format.tempText)
+      mainConditionStack.centerAlignContent()
+      this.provideText(tempText, mainConditionStack, this.format.tempText)
       mainConditionStack.addSpacer()
       this.provideText(this.displayNumber(weatherData.currentUVI,"--"), mainConditionStack, this.format.smallTemp)
     }
@@ -2316,7 +2316,7 @@ const weatherCal = {
           type: "bool",
         },
         horizontalCondition: {
-          val: false,
+          val: true,
           name: "Display the condition and temperature horizontally",
           type: "bool",
         },
