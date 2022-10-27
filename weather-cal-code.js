@@ -1241,11 +1241,11 @@ const weatherCal = {
     
     const tempText = this.displayNumber(weatherData.currentTemp,"--") + "°"
     if (weatherSettings.horizontalCondition) {
-      mainConditionStack.addSpacer(5)
+      //mainConditionStack.addSpacer(5)
       mainConditionStack.layoutHorizontally()
-      mainConditionStack.centerAlignContent()
+      //mainConditionStack.centerAlignContent()
       this.provideText(tempText, mainConditionStack, this.format.tempText)
-      mainConditionStack.addSpacer(5)
+      mainConditionStack.addSpacer()
       this.provideText(this.displayNumber(weatherData.currentUVI,"--"), mainConditionStack, this.format.smallTemp)
     }
 
