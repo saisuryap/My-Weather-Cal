@@ -868,7 +868,7 @@ const weatherCal = {
 	if (!sunData || sunData.cacheExpired) {
 		try {
 			const apiKey = this.fm.readString(this.fm.joinPath(this.fm.libraryDirectory(), "weather-cal-api-key")).replace(/\"/g,"")
-			const sunReq = "https://api.openweathermap.org/data/2.5/onecall?lat=" + this.data.location.latitude + "&lon=" + this.data.location.longitude + "&exclude=minutely,alerts&units=" + this.settings.widget.units + "&lang=" + locale + "&appid=" + apiKey
+			const sunReq = "https://api.openweathermap.org/data/3.0/onecall?lat=" + this.data.location.latitude + "&lon=" + this.data.location.longitude + "&exclude=minutely,alerts&units=" + this.settings.widget.units + "&lang=" + locale + "&appid=" + apiKey
 			sunData = await new Request(sunReq).loadJSON()
 			if (sunData.cod) { sunData = null }
 			if (sunData) { this.fm.writeString(sunPath, JSON.stringify(sunData)) }
@@ -905,7 +905,7 @@ const weatherCal = {
     if (!weatherData || weatherData.cacheExpired) {
       try {
         const apiKey = this.fm.readString(this.fm.joinPath(this.fm.libraryDirectory(), "weather-cal-api-key")).replace(/\"/g,"")
-        const weatherReq = "https://api.openweathermap.org/data/2.5/onecall?lat=" + this.data.location.latitude + "&lon=" + this.data.location.longitude + "&exclude=minutely,alerts&units=" + this.settings.widget.units + "&lang=" + locale + "&appid=" + apiKey
+        const weatherReq = "https://api.openweathermap.org/data/3.0/onecall?lat=" + this.data.location.latitude + "&lon=" + this.data.location.longitude + "&exclude=minutely,alerts&units=" + this.settings.widget.units + "&lang=" + locale + "&appid=" + apiKey
         weatherData = await new Request(weatherReq).loadJSON()
         if (weatherData.cod) { weatherData = null }
         if (weatherData) { this.fm.writeString(weatherPath, JSON.stringify(weatherData)) }
@@ -919,6 +919,7 @@ const weatherCal = {
     this.data.weather.currentTemp = weatherData ? weatherData.current.temp : null
     this.data.weather.currentCondition = weatherData ? weatherData.current.weather[0].id : 100
     this.data.weather.currentDescription = weatherData ? (english ? weatherData.current.weather[0].main : weatherData.current.weather[0].description) : "--"
+    this.data.weather.currentUVI = weatherData ? weatherData.current.uvi : null
     this.data.weather.todayHigh = weatherData ? weatherData.daily[0].temp.max : null
     this.data.weather.todayLow = weatherData ? weatherData.daily[0].temp.min : null
 
