@@ -1244,7 +1244,7 @@ const weatherCal = {
       //mainConditionStack.addSpacer(5)
       mainConditionStack.layoutHorizontally()
       //mainConditionStack.centerAlignContent()
-      this.provideText(tempText, mainConditionStack, this.format.tempText)
+      //this.provideText(tempText, mainConditionStack, this.format.tempText)
       mainConditionStack.addSpacer()
       this.provideText(this.displayNumber(weatherData.currentUVI,"--"), mainConditionStack, this.format.smallTemp)
     }
