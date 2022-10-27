@@ -1235,17 +1235,17 @@ const weatherCal = {
 
     const mainConditionStack = this.align(currentWeatherStack)
     const mainCondition = mainConditionStack.addImage(this.provideConditionSymbol(weatherData.currentCondition,this.isNight(this.now)))
-    mainCondition.imageSize = new Size(11,11) // TODO: Adjustable size
+    mainCondition.imageSize = new Size(14, 18) // TODO: Adjustable size
     this.tintIcon(mainCondition, this.format.largeTemp)
     mainConditionStack.setPadding(weatherSettings.showLocation ? 0 : this.padding, this.padding, 0, this.padding)
     
     const tempText = this.displayNumber(weatherData.currentTemp,"--") + "°"
     if (weatherSettings.horizontalCondition) {
-      mainConditionStack.addSpacer()
+      mainConditionStack.addSpacer(2)
       mainConditionStack.layoutHorizontally()
-      mainConditionStack.centerAlignContent()
+      //mainConditionStack.centerAlignContent()
       this.provideText(tempText, mainConditionStack, this.format.tempText)
-      mainConditionStack.addSpacer()
+      mainConditionStack.addSpacer(2)
       this.provideText(this.displayNumber(weatherData.currentUVI,"--"), mainConditionStack, this.format.smallTemp)
     }
 
