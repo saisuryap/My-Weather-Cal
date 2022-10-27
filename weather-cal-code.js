@@ -1243,7 +1243,7 @@ const weatherCal = {
     if (weatherSettings.horizontalCondition) {
       //mainConditionStack.addSpacer(2)
       mainConditionStack.layoutHorizontally()
-      //mainConditionStack.centerAlignContent()
+      mainConditionStack.centerAlignContent()
       this.provideText(tempText+", "+this.displayNumber(weatherData.currentUVI,"--"), mainConditionStack, this.format.tempText)
       //mainConditionStack.addSpacer(2)
     }
