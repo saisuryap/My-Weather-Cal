@@ -1239,12 +1239,12 @@ const weatherCal = {
     this.tintIcon(mainCondition, this.format.largeTemp)
     mainConditionStack.setPadding(weatherSettings.showLocation ? 0 : this.padding, this.padding, 0, this.padding)
     
-    const tempText = this.displayNumber(weatherData.currentTemp,"--") + "°"
+    const tempText = this.displayNumber(weatherData.currentTemp,"--") + "°, " + this.displayNumber(weatherData.currentUVI,"--")
     if (weatherSettings.horizontalCondition) {
       mainConditionStack.addSpacer(5)
       mainConditionStack.layoutHorizontally()
       mainConditionStack.centerAlignContent()
-      this.provideText(tempText, mainConditionStack, this.format.largeTemp)
+      this.provideText(tempText, mainConditionStack, this.format.mediumSystemFont)
     }
 
     if (weatherSettings.showCondition) {
@@ -2492,7 +2492,7 @@ if (moduleName == Script.name()) {
       column
     `
     const name = "Weather Cal Widget Builder"
-    await weatherCal.runSetup(name, true, "Weather Cal code", "https://raw.githubusercontent.com/mzeryck/Weather-Cal/main/weather-cal-code.js")
+    await weatherCal.runSetup(name, true, "Weather Cal code", "https://raw.githubusercontent.com/saisuryap/My-Weather-Cal/main/weather-cal-code.js")
     const w = await weatherCal.createWidget(layout, name, true)
     w.presentLarge()
     Script.complete()
