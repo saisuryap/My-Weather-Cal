@@ -31,7 +31,11 @@ async function getwidget(total, haveGone, str) {
   titlew.font = Font.systemFont(12)
   w.addSpacer(4)
   //const imgw = w.addImage(creatProgress(total,haveGone))
-  const imgw = w.addImage(setWidgetBackground())
+  let photos = await Photos.latestPhotos(15);
+  let index = Math.round(Math.random() * photos.length) - 1;
+  let photo = photos[index];
+  w.addImage(photo)
+  const imgw = w.addImage()
   imgw.imageSize=new Size(width, h)
   w.addSpacer(6)
 }
