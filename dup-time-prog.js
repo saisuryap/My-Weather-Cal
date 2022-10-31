@@ -1,6 +1,6 @@
 // Variables used by Scriptable.
 // These must be at the very top of the file. Do not edit.
-// icon-color: yellow; icon-glyph: hourglass-half;
+// icon-color: black; icon-glyph: hourglass-half;
 const width=120
 const h=5
 const w = new ListWidget()
