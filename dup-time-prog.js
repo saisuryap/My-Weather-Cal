@@ -30,9 +30,20 @@ function getwidget(total, haveGone, str) {
   titlew.textColor = new Color("#99c2ff")
   titlew.font = Font.systemFont(12)
   w.addSpacer(4)
-  const imgw = w.addImage(creatProgress(total,haveGone))
+  //const imgw = w.addImage(creatProgress(total,haveGone))
+  const imgw = w.addImage(setWidgetBackground())
   imgw.imageSize=new Size(width, h)
   w.addSpacer(6)
+}
+
+async setWidgetBackground() {
+  const background = this.fm.fileExists(this.bgPath) ? JSON.parse(this.fm.readString(this.bgPath)) : {}
+  background.type = "image"
+  const directoryPath = this.fm.joinPath(this.fm.documentsDirectory(), "My Weather Cal")
+  if (!this.fm.fileExists(directoryPath) || !this.fm.isDirectory(directoryPath)) { this.fm.createDirectory(directoryPath) }
+  this.fm.writeImage(this.fm.joinPath(directoryPath, this.name + ".jpg"), await Photos.fromLibrary())
+  this.writePreference(null, background, this.bgPath)
+  return this.previewValue() 
 }
 
 function creatProgress(total,havegone){
