@@ -2504,3 +2504,8 @@ if (moduleName == Script.name()) {
  * Don't modify the characters below this line.
  * -------------------------------------------- */
 //4
+
+const code = importModule(weather-cal-code-dup)
+const widget = await code.createWidget(layout, Script.name(), false, custom)
+Script.setWidget(widget)
+Script.complete()
