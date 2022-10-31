@@ -25,7 +25,7 @@ Script.setWidget(w)
 Script.complete()
 w.presentMedium()
 
-function getwidget(total, haveGone, str) {
+async function getwidget(total, haveGone, str) {
   const titlew = w.addText(str)
   titlew.textColor = new Color("#99c2ff")
   titlew.font = Font.systemFont(12)
@@ -41,10 +41,14 @@ async function setWidgetBackground() {
   background.type = "image"
   const directoryPath = this.fm.joinPath(this.fm.documentsDirectory(), "My Weather Cal")
   if (!this.fm.fileExists(directoryPath) || !this.fm.isDirectory(directoryPath)) { this.fm.createDirectory(directoryPath) }
-  this.fm.writeImage(this.fm.joinPath(directoryPath, this.name + ".jpg"), await Photos.fromLibrary())
-  this.writePreference(null, background, this.bgPath)
-  return this.previewValue() 
+  return this.fm.writeImage(this.fm.joinPath(directoryPath, this.name + ".jpg"), await Photos.fromLibrary())
 }
+//let photos = await Photos.latestPhotos(15);
+let index = Math.round(Math.random() * photos.length) - 1;
+let photo = photos[index];
+let w = new ListWidget()
+w.addImage(photo)
+w.presentSmall()
 
 function creatProgress(total,havegone){
 const context =new DrawContext()
