@@ -36,7 +36,7 @@ function getwidget(total, haveGone, str) {
   w.addSpacer(6)
 }
 
-async setWidgetBackground() {
+function setWidgetBackground() {
   const background = this.fm.fileExists(this.bgPath) ? JSON.parse(this.fm.readString(this.bgPath)) : {}
   background.type = "image"
   const directoryPath = this.fm.joinPath(this.fm.documentsDirectory(), "My Weather Cal")
