@@ -34,25 +34,17 @@ async function getwidget(total, haveGone, str) {
   let photos = await Photos.latestPhotos(15);
   let index = Math.round(Math.random() * photos.length) - 1;
   let photo = photos[index];
-  w.addImage(photo)
-  const imgw = w.addImage()
-  imgw.imageSize=new Size(width, h)
+  const imgw = w.addImage(photo)
+  imgw.imageSize=new Size(120, 120)
   w.addSpacer(6)
 }
 
-async function setWidgetBackground() {
-  const background = this.fm.fileExists(this.bgPath) ? JSON.parse(this.fm.readString(this.bgPath)) : {}
-  background.type = "image"
-  const directoryPath = this.fm.joinPath(this.fm.documentsDirectory(), "My Weather Cal")
-  if (!this.fm.fileExists(directoryPath) || !this.fm.isDirectory(directoryPath)) { this.fm.createDirectory(directoryPath) }
-  return this.fm.writeImage(this.fm.joinPath(directoryPath, this.name + ".jpg"), await Photos.fromLibrary())
-}
 //let photos = await Photos.latestPhotos(15);
-let index = Math.round(Math.random() * photos.length) - 1;
-let photo = photos[index];
-let w = new ListWidget()
-w.addImage(photo)
-w.presentSmall()
+//let index = Math.round(Math.random() * photos.length) - 1;
+//let photo = photos[index];
+//let w = new ListWidget()
+//w.addImage(photo)
+//w.presentSmall()
 
 function creatProgress(total,havegone){
 const context =new DrawContext()
